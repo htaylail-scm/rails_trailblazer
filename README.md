@@ -43,4 +43,11 @@ bin/rails generate simple_form:install
 exit
 
 ```
-All you have to do is access `http: // localhost: 3000/posts`.
+All you have to do is access `http: // localhost: 3000/`.
+
+# to login with admin account
+email => admin@gmial.com
+pwd = admin
+# to login with user account 
+email => user@gmail.com
+pwd = user
