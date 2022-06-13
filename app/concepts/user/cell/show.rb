@@ -2,7 +2,7 @@ module User::Cell
   class Show < Trailblazer::Cell
     def image
       if model.profile.attached?
-        image_tag url_for(model.profile)
+        image_tag url_for(model.profile), style: "width:200px; margin-left: 140px;"
       end
     end
 

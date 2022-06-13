@@ -4,8 +4,7 @@ h2 User Detail
   = model.name
 .col-md-6
   -if model.profile.attached?
-    .img.text-center.mv-20.profile
-    ==image
+    div style=("width: 100px;") ==image
   -else
     .img.text-center.mv-20.profile
     = image_tag "d_profile.jpg"
