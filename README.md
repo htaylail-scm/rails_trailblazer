@@ -47,7 +47,7 @@ All you have to do is access `http: // localhost: 3000/`.
 
 # to login with admin accoun
 email => admin@gmial.com
-pwd => admin
+pwd => Admin@123
 # to login with user account 
 email => user@gmail.com
-pwd => user
+pwd => User@123
