@@ -45,9 +45,9 @@ exit
 ```
 All you have to do is access `http: // localhost: 3000/`.
 
-# to login with admin account
+# to login with admin accoun
 email => admin@gmial.com
-pwd = admin
+pwd => admin
 # to login with user account 
 email => user@gmail.com
-pwd = user
+pwd => user
