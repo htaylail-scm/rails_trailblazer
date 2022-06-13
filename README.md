@@ -4,7 +4,7 @@
 
 - Ruby 2.7.2
 - Docker
-- Ruby on Rails 6.0.5
+- Ruby on Rails '~> 6.1.5', '>= 6.1.5.1'
 - Mysql 8.0
 
 #### Step1 Clone this project
@@ -45,7 +45,7 @@ exit
 ```
 All you have to do is access `http: // localhost: 3000/`.
 
-# to login with admin accoun
+# to login with admin account
 email => admin@gmial.com
 pwd => Admin@123
 # to login with user account 
