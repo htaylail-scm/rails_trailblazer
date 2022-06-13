@@ -21,6 +21,8 @@ docker-compose build
 
 # Create Database
 docker-compose run web bin/rails db:create
+docker-compose run web bin/rails db:migrate
+docker-compose run web bin/rails db:seed
 
 # Start docker-compose services
 docker-compose up -d
