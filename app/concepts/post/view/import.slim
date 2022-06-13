@@ -1,0 +1,14 @@
+div style=("margin: 100px;")
+  h3.mv-20 Upload Post Lists csv file
+  =form_tag import_csv_posts_path, multipart: true
+    .field.form-group.row
+      .col-form-label Choose CSV file
+      .col-sm-5
+        =file_field_tag :file, accept: 'text/csv', class: "form-control"
+        - if model.errors[:file].any?
+          .text-danger
+            .error-msg CSV  #{ model.errors[:file][0]}
+    .col-sm
+      =submit_tag "Upload", class: 'btn btn-primary'
+      =button_tag "Clear", class: 'btn btn-dark', type: :reset, style: "margin: 0 5px;"
+      = link_to "Back", posts_path, class: "btn btn-secondary"

@@ -1,0 +1,29 @@
+div style=("margin: 200px;padding:50px 120px;background: #51c39eb5; text-align: center;")
+  h3 Sign Up Form
+  br 
+  =form_for model do |f|
+   
+    =f.text_field :name, class: "form-control mv-20", placeholder: "Name"
+    .text-danger
+      - if model.errors[:name].any?
+        .error-msg Name  #{ model.errors[:name][0] }
+    br
+    
+    = f.text_field :email, class: "form-control mv-20", placeholder: "Email" 
+    .text-danger   
+      - if model.errors[:email].any?
+        .error-msg Email  #{ model.errors[:email][0] }
+    br   
+    =f.password_field :password, class: "form-control mv-20", placeholder: "Password"
+    br  
+    =f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Password"
+    .text-danger
+      - if model.errors[:password_confirmation].any?
+        .error-msg Password Confirmation  #{ model.errors[:password_confirmation][0] }
+
+    br
+    =f.submit "Signup", class: "btn btn-primary", style: "margin-right: 5px;"
+    ==link_to 'Login Instead?', login_path
+
+
+

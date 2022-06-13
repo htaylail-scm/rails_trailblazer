@@ -1,13 +1,23 @@
-.row.new
-  h1 New Post
+h3 New Post
 
-  = simple_form_for model do |f|
-    .row
-      .col-sm-12
-        = f.input :title, placeholder: "Title", label: false
-    .row
-      .col-sm-12
-        = f.input :body, placeholder: "Say it out loud!", label: false
-    .row
-      .col-sm-12
-        = f.submit 'Create Post'
+= simple_form_for model do |f|
+  
+  .row.col-md-8
+    = f.label :title
+    .col-sm-10
+    = f.text_field :title, class: "form-control"
+    .text-danger
+      - if model.errors[:title].any?
+        .error-msg Title  #{ model.errors[:title][0] }
+    
+  .row.col-md-8
+    = f.label :body
+    .col-sm-10
+    = f.text_field :body, class: "form-control"
+    .text-danger
+      - if model.errors[:body].any?
+        .error-msg Body  #{ model.errors[:body][0] }
+  br
+  .row
+    .col-sm-12
+      = f.submit 'Create Post', class: "btn btn-primary"

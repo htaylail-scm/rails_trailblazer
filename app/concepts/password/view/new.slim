@@ -1,0 +1,11 @@
+div style=("padding: 100px;")
+  h3 Forget your password
+  = form_with url: reset_password_path do |f| 
+    .row.col-md-6
+      = f.label :email, class: "col-sm-2 col-form-label" 
+      .col-sm-10
+        = f.text_field :email, class: "form-control", placeholder: "example@gmail.com" 
+    br
+    .row.col-md-6
+      .col-sm-10
+        = f.submit "Reset Password" , class: "btn btn-primary" 

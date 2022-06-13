@@ -1,0 +1,110 @@
+
+h3 Users List
+
+div style=("margin: 2px 0;display: flex;justify-content: flex-end;")
+  = form_tag search_users_path, method: :get
+    = text_field_tag :name,{}, class: "form-control w-auto mv-r-20 float-left", value: search_name, placeholder: "Name..."
+    = text_field_tag :email,{}, class: "form-control w-auto mv-r-20 float-left", value: search_email, placeholder: "Email..."
+    = date_field_tag :from_date,{}, class: "form-control w-auto mv-r-20 float-left", value: search_from_date
+    = date_field_tag :to_date,{}, class: "form-control w-auto mv-r-20 float-left", value: search_to_date
+    = submit_tag "Search", class: "btn btn-primary" ,style: "margin:0 2px;"
+    = link_to "New User", new_user_path, class: "btn btn-primary"
+    
+
+table#table_id.table.table-striped.table-hover
+  thead.thead-dark
+    tr
+      th Name
+      th Email
+      th Created UserId
+      th Phone
+      th Address
+      th Dob 
+      th Role
+      th Created At 
+      th Updated At
+      th Action
+  tbody
+    - model.each do |user|
+      tr
+        td = link_to user.name, '#', "data-toggle"=>"modal", "data-target" => "#showuser_#{user.id}"
+        td = user.email                             
+        td.text-center = user.created_user_id           
+        td = user.phone
+        td = user.address
+        td = user.dob
+        -if user.role == "0"
+          td Admin
+        -else 
+          td User
+        td = user.created_at.strftime("%Y-%m-%d")
+        td = user.updated_at.strftime("%Y-%m-%d")
+        td = link_to 'Delete', '#', "data-toggle"=>"modal", "data-target" => "#deleteuser_#{user.id}", class: 'btn btn-danger' 
+
+
+        //  Delete Post Modal
+        .modal.fade id=("deleteuser_#{user.id}")
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h5.modal-title User Delete Confirmation
+              .modal-body
+                p Are you sure to delete User : = #{user.name}  ?
+              .modal-footer
+                a.btn.btn-secondary data-dismiss="modal" href="#"  Cancel
+                = button_to 'Delete', user_path(user), method: :delete, :class => 'btn btn-primary'         
+        
+        / /  Show Detail Popup
+        .modal.fade id=("showuser_#{user.id}") role="dialog"
+          .modal-dialog
+            Modal content
+            .modal-content
+              .modal-header
+                h5#exampleModalLabel.modal-title User Detail
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  &times;
+              .modal-body
+                div
+                  -if user.profile.attached?                   
+                    strong Profile :
+                    = image_tag "d_profile.jpg", style: "height:120px;width:auto;"
+                  -else                   
+                    strong Profile :
+                    /!= image_url user.profile, style: "height:120px;width:auto;"
+                    = image_tag "d_profile.jpg", style: "height:120px;width:auto;"
+                  br
+
+                  label.col-4
+                    strong Name :
+                  = user.name
+                  br
+                  label.col-4
+                    strong Email :
+                  = user.email
+                  br
+                  label.col-4
+                    strong Address :
+                  = user.address
+                  br
+                  label.col-4
+                    strong Phone :
+                  = user.phone
+                  br
+                  label.col-4
+                    strong Date of Birth :
+                  = user.dob               
+                  br
+                  label.col-4
+                    strong Created Date :
+                  = user.created_at.strftime("%m %B %y")
+                  br
+                  label.col-4
+                    strong Updated Date :
+                  = user.updated_at.strftime("%m %B %y")
+                  br
+                  /! = link_to "Edit", edit_user_path(user.id), class: "btn btn-primary"
+                  /! = link_to "Change Password", edit_password_path(user.id), class: "btn btn-primary" , style: "margin: 0 5px;"
+
+              .modal-footer
+                = link_to "Edit", edit_user_path(user.id), class: "btn btn-primary"
+                a.btn.btn-secondary data-dismiss="modal" href="#"  Close

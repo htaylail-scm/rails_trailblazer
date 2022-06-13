@@ -1,0 +1,9 @@
+div style=("margin: 200px;")
+.text-center
+  h1 Welcome from Home Page.
+  br
+  -if current_user.nil?
+    = link_to 'Log in', login_path , class: "btn btn-primary" ,style: "width:300px"
+    br
+    br
+    == link_to 'Sign Up', new_user_path , class: "btn btn-secondary",style: "width:300px"

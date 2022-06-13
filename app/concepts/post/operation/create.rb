@@ -6,9 +6,17 @@ module Post::Operation
     end
 
     step Subprocess(Present)
+    step :assign_current_user!
     step Contract::Validate(key: :post)
-    step Contract::Persist()
+    step Contract::Persist()    
     step :notify!
+
+    def assign_current_user!(options, params:, **)
+      if options['current_user'].present?
+        options[:params][:post][:created_user_id] = options['current_user'][:id]
+        options[:params][:post][:updated_user_id] = options['current_user'][:id]
+      end
+    end
 
     def notify!(ctx, model:, **)
       ctx["result.notify"] = Rails.logger.info("New post #{model.title}.")

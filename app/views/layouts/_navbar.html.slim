@@ -1,0 +1,21 @@
+ul.nav.navbar.navbar-expand-lg style=("padding: 16px; background: #daf8fb; font-size: 22px; margin-bottom: 50px;") 
+  li.nav-item
+    a.nav-link.active href="#"  Hello | Trailblazer
+  li.nav-item
+   = link_to "Posts" , posts_path, class: "nav-link" 
+  -if admin?
+    li.nav-item
+    = link_to "Users" , users_path, class: "nav-link" 
+  li.nav-item
+    = link_to "User" , user_path(current_user), class: "nav-link" 
+
+  #navbarNav.collapse.navbar-collapse  
+  li.nav-item.float-end
+    .dropdown.show style=(" color: #daf8fb;")      
+      a.nav-link.dropdown-toggle role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+        = current_user.name
+      .dropdown-menu aria-labelledby="dropdownMenuLink" style="left:-75px;"
+        = link_to "Profile", user_path(current_user) , class:"dropdown-item"
+        = link_to "Log Out", logout_path , class:"dropdown-item"
+        = link_to "Change Password", edit_password_path(current_user) , class:"dropdown-item"
+

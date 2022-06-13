@@ -1,6 +1,90 @@
-h4 = total
-= cell(Post::Cell::Item, collection: model)
+/*h4 = total
+/*= cell(Post::Cell::Item, collection: model)
 
-.row
-  .col-sm-3.text-center
-    h4 = new
+/*.row
+ .col-sm-3.text-center
+   h4 = new
+
+h3 Post Lists
+div style=("display: flex;justify-content: flex-end; gap: 2px; margin: 2px 0;")
+  =form_tag search_posts_path, method: :get
+    = text_field_tag :search_keyword,{}, class: "form-control w-auto mv-r-20 float-left", value: find_word, placeholder: "Search..."
+    = submit_tag "Search", class: "btn btn-dark", style: "margin:0 2px;"
+    == link_to 'Clear', posts_path, class:"btn btn-secondary "
+
+  = link_to 'Add', new_post_path, class: "btn btn-primary"
+  = link_to 'Upload', upload_posts_path, class: "btn btn-primary"
+  = link_to 'Download', download_posts_path(format: :csv), class: "btn btn-primary"
+
+table#table_id.table.table-striped.table-hover
+  thead.thead-dark.text-center
+    tr
+      th Title
+      th Body
+      th UserId
+      th Created At
+      th Update UserId
+      th Updated At
+      th Action
+
+      
+  
+  tbody
+    - @model.each do |post|
+      tr
+        /!td = link_to post.title,post 
+        td
+          = link_to post.title, '#', "data-toggle"=>"modal", "data-target" => "#showpost_#{post.id}"
+        td = post.body
+        td.text-center = post.created_user_id
+        td = post.created_at.strftime("%d %B %Y")
+        td.text-center= post.updated_user_id
+        td = post. updated_at.strftime("%d %B %Y")
+        td 
+          div style="display: -webkit-inline-box;" data-controlleer="books" 
+            = link_to 'Edit', edit_post_path(post),class: "btn btn-warning", style: "margin: 0px 1px;" 
+            = link_to 'Delete', '#', "data-toggle"=>"modal", "data-target" => "#deletepost_#{post.id}", class: 'btn btn-danger' 
+
+            
+        //  Delete Post Modal
+        .modal.fade id=("deletepost_#{post.id}")
+          .modal-dialog
+            .modal-content
+              .modal-header
+                h5.modal-title Post Delete Confirmation
+              .modal-body
+                p Are you sure to delete post Id = #{post.id}  ?
+              .modal-footer
+                a.btn.btn-secondary data-dismiss="modal" href="#"  Cancel
+                = button_to 'Delete', post_path(post), method: :delete, :class => 'btn btn-primary' 
+        
+        / /  Show Detail Popup
+        .modal.fade id=("showpost_#{post.id}") role="dialog"
+          .modal-dialog
+            Modal content
+            .modal-content
+              .modal-header
+                h5#exampleModalLabel.modal-title Post Detail
+                button.close aria-label="Close" data-dismiss="modal" type="button" 
+                  span aria-hidden="true"  &times;
+              .modal-body
+                div
+                  label.col-4
+                    strong title :
+                  = post.title
+                  br
+                  label.col-4
+                    strong Body :
+                  = post.body
+                  br
+                  label.col-4
+                    strong Created Date :
+                  = post.created_at.strftime("%m %B %y")
+                  br
+                  label.col-4
+                    strong Updated Date :
+                  = post.updated_at.strftime("%m %B %y")
+
+              .modal-footer
+                = link_to 'Edit', edit_post_path(post),class: "btn btn-primary"
+                a.btn.btn-secondary data-dismiss="modal" href="#"  Close

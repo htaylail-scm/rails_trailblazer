@@ -1,0 +1,18 @@
+div style=("padding: 100px;")
+  h2 Reset Your Password
+  = form_with model: model, url: reset_password_edit_path(token: params[:token]) do |form|
+
+    .row.col-md-6
+      = form.label :password 
+      .col-sm-10
+      = form.password_field :password, class: "form-control" 
+    .row.col-md-6
+      = form.label :password_confirmation 
+      .col-sm-10
+      = form.password_field :password_confirmation, class: "form-control" 
+      p.text-danger Password and Confirm password must be same!
+        
+    br
+    .row.col-md-6
+      .col-sm-10
+        = form.submit  "Reset Password" , class: "btn btn-primary" 

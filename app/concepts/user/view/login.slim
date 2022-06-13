@@ -1,0 +1,19 @@
+div style=("margin: 200px;padding:50px 120px;background: #51c39eb5; text-align: center;")
+  h3 Login Form
+  br
+  = form_for model, url:login_path do |f|
+
+    = f.text_field :email, class: "form-control mv-20", placeholder: "Email"
+    br
+    = f.password_field :password, class: "form-control", placeholder: "Password"
+    br
+    .custom-control.custom-checkbox
+      =f.check_box :remember_me, class: "custom-control-input", id: "remember-me", name: "remember_me"
+      =f.label:remember_me, class:"custom-control-label", for:"remember-me"
+    ==link_to 'Forgot Password?', reset_password_path
+    br   
+    = f.submit "Login", class: "btn btn-primary", style: "margin-right: 5px;"
+    
+    span No account?
+    ==link_to ' Create new here.', new_user_path
+    

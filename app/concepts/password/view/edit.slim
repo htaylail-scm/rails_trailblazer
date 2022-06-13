@@ -1,0 +1,17 @@
+div style=("padding: 0 200px;")
+  h2 Edit Password
+  = form_for model, url: edit_password_path, method: :post do |f| 
+    .col-md-6
+      = f.label :old_password
+      = f.password_field :old_password, class: "form-control" 
+    .col-md-6
+      = f.label :new_password 
+      = f.password_field :password, class: "form-control"
+    .col-md-6
+      = f.label :confirm_password
+      = f.password_field :password_confirmation, class: "form-control"
+    br
+    .col-md-6
+      = f.submit  "Update" , class: "btn btn-primary" , style: "margin : 0 5px;"
+      =  link_to  "Back", user_path(model), class: "btn btn-warning"
+

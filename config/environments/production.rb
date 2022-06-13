@@ -27,6 +27,7 @@ Rails.application.configure do
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
+  # config.assets.compile = true
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -109,4 +110,34 @@ Rails.application.configure do
   # config.active_record.database_selector = { delay: 2.seconds }
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
+
+
+  
+  config.action_mailer.default_url_options = { host: "localhost:3000"}
+
+  # to test with email
+  # config.action_mailer.delivery_method = :smtp 
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :test
+  #   config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :user_name            => 'gmail_username',
+  #   :password             => 'gmail_password',
+  #   :authentication       => "plain",
+  #   :enable_starttls_auto => true
+  # }
+
+  # to test with mailtrap
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :user_name => '9c176675bf5032',
+    :password => '4de7d7304596e2',
+    :address => 'smtp.mailtrap.io',
+    :domain => 'smtp.mailtrap.io',
+    :port => '2525',
+    :authentication => :cram_md5
+  }
+
+
 end
