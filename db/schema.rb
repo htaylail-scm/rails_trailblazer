@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2022_06_10_083539) do
   create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.string "body"
-    t.string "author"
     t.integer "created_user_id"
     t.integer "updated_user_id"
     t.integer "deleted_user_id"

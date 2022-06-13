@@ -6,4 +6,3 @@ module User::Cell
     end
   end
 end
-

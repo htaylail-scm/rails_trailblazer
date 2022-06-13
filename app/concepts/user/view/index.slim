@@ -65,12 +65,11 @@ table#table_id.table.table-striped.table-hover
                   span aria-hidden="true"  &times;
               .modal-body
                 div
-                  -if user.profile.attached?               
+                  -if user.profile.attached?
                     strong Profile :
                     .img
                       == image_tag url_for user.profile
                   br
-
                   label.col-4
                     strong Name :
                   = user.name

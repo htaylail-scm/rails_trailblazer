@@ -131,8 +131,8 @@ Rails.application.configure do
   # to test with mailtrap
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :user_name => '9c176675bf5032',
-    :password => '4de7d7304596e2',
+    :user_name => 'user_name',
+    :password => 'password',
     :address => 'smtp.mailtrap.io',
     :domain => 'smtp.mailtrap.io',
     :port => '2525',

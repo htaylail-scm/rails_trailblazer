@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module User::Cell
   class Index < Trailblazer::Cell
     def admin?
@@ -23,4 +21,3 @@ module User::Cell
     end
   end
 end
-

@@ -29,7 +29,6 @@ div style=("column-count: 2;")
     - if admin?
       div
         =f.label :role, "Role", class:" col-form-label"
-        /!= f.select :role, options_for_select([["Admin", 0], ["User", 1]])
         = f.select :role, [['Please choose user role'], ["Admin", 0],["User", 1]], {}, {class: 'form-control'} 
     br
     div

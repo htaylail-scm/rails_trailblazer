@@ -17,7 +17,6 @@ div style=("column-count: 2;")
     - if admin?
       div
         = f.label :role, "Role", class:" col-form-label"
-        /!= f.select :role, options_for_select([["Admin", 0], ["User", 1]])
         = f.select :role, [['Please choose user role'], ["Admin", 0],["User", 1]], {}, {class: 'form-control'} 
     div
       =f.label :phone, class:" col-form-label"
@@ -35,7 +34,9 @@ div style=("column-count: 2;")
       = f.label :dob, class:" col-form-label"
       /!= f.date_field :dob, class:"form-control"
       =f.text_field :dob, as: :date ,class: 'form-control input-sm', placeholder: 'yyyy-mm-dd..'
-      span Date format should be  ( yyyy-mm-dd )
+      .text-danger  
+        - if model.errors[:dob].any?
+          .error-msg Dob  #{ model.errors[:dob][0] }
     div
       =f.label :profile, class:" col-form-file"
       =f.file_field :profile, :accept => "image/x-png,image/gif,image/jpeg", class:"form-control", id:"formFile"

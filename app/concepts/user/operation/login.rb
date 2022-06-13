@@ -9,9 +9,11 @@ module User::Operation
     step Contract::Validate(key: :user)
     step :model!
 
+    # to check password
     def model!(options, params:, **)
       user = User.find_by(email: params[:user][:email])    
       if user.present?
+        # check same password
         if user && user.authenticate(params[:user][:password])
           if params[:remember_me]
             options['remember_me'] = 1

@@ -9,7 +9,6 @@ module User::Operation
     end
 
     def delete!(ctx, model:, **)
-      # abort model[:id].inspect
       # abort model[:deleted_user_id].inspect
       model.save
       model.destroy

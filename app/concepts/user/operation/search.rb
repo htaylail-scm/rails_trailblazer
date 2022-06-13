@@ -1,25 +1,26 @@
 module User::Operation
-    class Search < Trailblazer::Operation
-      step :get_users
-        
-      def get_users(options, params:, **)
-        name = params[:name]
-        email = params[:email]
-        from_date = params[:search_from_date]   
-        to_date = params[:to_date]
-        if from_date.present? and to_date.present?
-            options['users'] = User.where("name like ? and email like ? and created_at >= ? and created_at <= ?", "%" + name + "%", "%" + email + "%", from_date, Date.parse(to_date)+1)
-          elsif from_date.present?
-            options['users'] = User.where("name like ? and email like ? and created_at >= ?", "%" + name + "%", "%" + email + "%", from_date)
-          elsif to_date.present?
-            options['users'] = User.where("name like ? and email like ? and created_at <= ?", "%" + name + "%", "%" + email + "%", Date.parse(to_date)+1)
-          elsif name.present?
-            options['users'] = User.where("name like ? and email like ?", "%" + name + "%", "%" + email + "%")
-          else
-          options['users'] = User.all
-        end    
-      end
+  class Search < Trailblazer::Operation
+    step :get_users
+      
+    
+    def get_users(options, params:, **)
+      name = params[:name]
+      email = params[:email]
+      from_date = params[:search_from_date]   
+      to_date = params[:to_date]
+      if from_date.present? and to_date.present?
+          options['users'] = User.where("name like ? and email like ? and created_at >= ? and created_at <= ?", "%" + name + "%", "%" + email + "%", from_date, Date.parse(to_date)+1)
+        elsif from_date.present?
+          options['users'] = User.where("name like ? and email like ? and created_at >= ?", "%" + name + "%", "%" + email + "%", from_date)
+        elsif to_date.present?
+          options['users'] = User.where("name like ? and email like ? and created_at <= ?", "%" + name + "%", "%" + email + "%", Date.parse(to_date)+1)
+        elsif name.present?
+          options['users'] = User.where("name like ? and email like ?", "%" + name + "%", "%" + email + "%")
+        else
+        options['users'] = User.all
+      end    
     end
+  end
 end
 
 

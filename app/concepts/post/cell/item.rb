@@ -3,7 +3,7 @@ module Post::Cell
     def title
       link_to model.title, model unless model == nil
     end
-
+    
     property :body
 
     def created_at

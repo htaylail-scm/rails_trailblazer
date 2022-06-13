@@ -10,7 +10,7 @@
 User.create!([{
   name: "Admin Acc",
   email: "admin@gmail.com",
-  password: "admin",
+  password: "Admin@123",
   password_confirmation: "admin",
   role: '0',
   address: "Yangon",  
@@ -21,7 +21,7 @@ User.create!([{
 {
   name: "User Acc",
   email: "user@gmail.com",
-  password: "user",
+  password: "User@123",
   password_confirmation: "user",
   role: '1',
   address: "Mandalay",

@@ -8,12 +8,9 @@ module Post::Operation
       step :import_csv!
 
       def import_csv!(options, params:, **)
-        CSV.foreach(params[:file].path, headers: true) do |row|
+        CSV.foreach(params[:file].path, headers: true, encoding:'iso-8859-1:utf-8') do |row|
           Post.create! row.to_hash.merge(created_user_id: options['current_user_id'], updated_user_id: options['current_user_id'], created_at: Time.now, updated_at: Time.now)
         end
-    end  
-
-     
+      end      
     end
-  end
-  
+  end  

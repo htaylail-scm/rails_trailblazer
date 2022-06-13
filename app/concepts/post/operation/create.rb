@@ -11,6 +11,7 @@ module Post::Operation
     step Contract::Persist()    
     step :notify!
 
+    # to assign value
     def assign_current_user!(options, params:, **)
       if options['current_user'].present?
         options[:params][:post][:created_user_id] = options['current_user'][:id]

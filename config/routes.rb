@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'sessions#welcome'
-  resources :books
+
   # for login
   get 'login', to: 'sessions#new'
   get 'logout', to: 'sessions#log_out'
@@ -9,7 +9,6 @@ Rails.application.routes.draw do
   get 'welcome', to: 'sessions#welcome'
   get 'authorized', to: 'sessions#page_requires_login'
   
-
   # for users
   resources :users do
     collection do
@@ -29,15 +28,14 @@ Rails.application.routes.draw do
     end
   end
 
-
-  # for password reset
+  # for password change
   get 'password/:id', to: 'passwords#edit', as: 'edit_password'
   post 'password/:id', to: 'passwords#update'
 
+  # for password reset
   get 'reset/password', to: 'passwords#new'
   post 'reset/password', to: 'passwords#create'
   get 'reset/password/edit', to: 'passwords#editReset'
   patch 'reset/password/edit', to: 'passwords#updateReset'
-
 
 end

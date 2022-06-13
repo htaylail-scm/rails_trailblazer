@@ -13,6 +13,7 @@ module User::Operation
     step Contract::Persist()    
 
     def assign_current_user!(options, params:, **)
+      options[:params][:user][:role] ||= 1
       options[:params][:user][:created_user_id] = options['current_user'][:id]
       options[:params][:user][:updated_user_id] = options['current_user'][:id]
       # abort options[:params][:user].inspect

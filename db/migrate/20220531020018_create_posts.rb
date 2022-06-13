@@ -3,7 +3,6 @@ class CreatePosts < ActiveRecord::Migration[6.0]
     create_table :posts do |t|
       t.string :title
       t.string :body
-      t.string :author
         
       t.integer :created_user_id
       t.integer :updated_user_id
