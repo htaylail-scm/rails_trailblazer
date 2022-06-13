@@ -7,17 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-# d1 = DateTime.new(2015, 6, 22)
-# start_on: d1,
-# dob: DateTime.parse("2022-06-02"),
-# some_date = 4.days.ago
-# dob: some_date,
-# "dob"=>"2022-06-02"
-
-
 User.create!([{
   name: "Admin Acc",
-  email: "htaylail.fortest@gmail.com",
+  email: "admin@gmail.com",
   password: "admin",
   password_confirmation: "admin",
   role: '0',

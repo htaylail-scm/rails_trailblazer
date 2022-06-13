@@ -4,11 +4,10 @@ h2 User Detail
   = model.name
 .col-md-6
   -if model.profile.attached?
-    div style=("width: 100px;") ==image
+    ==image
   -else
     .img.text-center.mv-20.profile
-    = image_tag "d_profile.jpg"
-
+    = image_tag "default_profile.jpg"
 .col-md-6
   label.col-4 Email
   = model.email 
