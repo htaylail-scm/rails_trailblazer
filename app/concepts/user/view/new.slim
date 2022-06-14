@@ -44,7 +44,6 @@ div style=("column-count: 2;")
       /!=f.date_field :dob,  class:"form-control"
       =f.text_field :dob, as: :date ,class: 'form-control input-sm', placeholder: 'yyyy-mm-dd..'
       span Date format should be  ( yyyy-mm-dd )
-
       .text-danger
         - if model.errors[:dob].any?
           .error-msg Dob  #{ model.errors[:dob][0] }
