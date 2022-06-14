@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :authorized
+ 
+  before_action :authorized, :except => [:new, :create]
+  
   # show user list
   def index
     run User::Operation::Index do |result|
