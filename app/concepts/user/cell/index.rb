@@ -1,5 +1,10 @@
 module User::Cell
   class Index < Trailblazer::Cell
+    
+    def logged_in?
+      options[:logged_in]
+    end
+
     def admin?
       options[:is_admin]
     end

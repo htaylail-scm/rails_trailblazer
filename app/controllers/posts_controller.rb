@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-
+  before_action :authorized
+  
   def new
     run Post::Operation::Create::Present
     render cell(Post::Cell::New, @form)
