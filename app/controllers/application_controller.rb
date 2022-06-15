@@ -7,7 +7,6 @@ class ApplicationController < ActionController::Base
   before_action :set_cache_headers
 
   private
-
   def set_cache_headers
     response.headers["Cache-Control"] = "no-cache, no-store"
     response.headers["Pragma"] = "no-cache"
@@ -46,5 +45,4 @@ class ApplicationController < ActionController::Base
       render :file => Rails.root.join('public', '404.html'),  :status => 404
     end
   end
-
 end

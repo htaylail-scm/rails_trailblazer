@@ -1,4 +1,9 @@
 class User < ApplicationRecord
+    
+    # to delete relate user posts
+    has_many :posts, :foreign_key => :created_user_id, :primary_key => :id, :dependent => :destroy
+    belongs_to :created_user, class_name: 'User', foreign_key: 'created_user_id'
+    belongs_to :updated_user, class_name: 'User', foreign_key: 'updated_user_id'
 
     # virtual attributes for authentication
     has_secure_password
@@ -12,6 +17,5 @@ class User < ApplicationRecord
 
     # soft delete
     acts_as_paranoid
-
 
 end

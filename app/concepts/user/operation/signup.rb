@@ -19,5 +19,4 @@ module User::Operation
       options["model"].updated_user_id = 1
     end
   end
-end
-  
+end  

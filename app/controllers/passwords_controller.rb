@@ -1,7 +1,5 @@
 class PasswordsController < ApplicationController
 
-  
-
   # to change password
   def edit
     run User::Operation::UpdatePassword::Present
